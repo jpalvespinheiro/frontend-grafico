@@ -29,19 +29,18 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
         backgroundColor: '#fff',
         borderRadius: 2,
         border: '1px solid #E0E0E0',
-        width: '95%',
+        width: '100%',
         margin: '0 auto',
       }}
     >
       <Grid container spacing={2} alignItems="center">
-        
         <Grid item xs={12} md={3}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box
               sx={{
                 width: 40,
                 height: 40,
-                backgroundColor: '#6A0DAD',
+                backgroundColor: '#EAD6FB',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -49,7 +48,7 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
                 marginRight: 1,
               }}
             >
-              <ArrowBackIcon sx={{ color: 'white' }} />
+              <ArrowBackIcon sx={{ color: '#9370DB' }} />
             </Box>
 
             <Box sx={{ flexGrow: 1 }}>
@@ -64,7 +63,7 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
                 InputProps={{
                   style: { 
                     border: '1px solid black', 
-                    borderRadius: '4px',
+                    borderRadius: '7px',
                     height: '50px',
                     fontSize: '1rem',
                   },
@@ -85,12 +84,11 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
               InputLabelProps={{ shrink: true }}
               value={dataInicio}
               onChange={(e) => setDataInicio(e.target.value)}
-              InputProps={{
-                style: { 
-                  border: '1px solid black', 
-                  borderRadius: '4px', 
+              sx={{
+                '& .MuiInputBase-root': {
                   height: '50px',
-                  fontSize: '1rem',
+                  borderRadius: '7px',
+                  border: '1px solid black',
                 },
               }}
               required
@@ -109,12 +107,11 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
               InputLabelProps={{ shrink: true }}
               value={dataFim}
               onChange={(e) => setDataFim(e.target.value)}
-              InputProps={{
-                style: { 
-                  border: '1px solid black', 
-                  borderRadius: '4px', 
+              sx={{
+                '& .MuiInputBase-root': {
                   height: '50px',
-                  fontSize: '1rem',
+                  borderRadius: '7px',
+                  border: '1px solid black',
                 },
               }}
               required
@@ -122,10 +119,21 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} md={3} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Grid item xs={12} md={2} sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button
             variant="contained"
-            sx={{ width: '48%', backgroundColor: '#9370DB', color: 'white', fontSize: '0.75rem' }}
+            sx={{
+              width: '40%',
+              bottom: '-10px',
+              backgroundColor: '#EAD5FF',
+              color: 'purple',
+              fontSize: '0.75rem',
+              transition: 'background-color 0.3s, transform 0.2s',
+              '&:hover': {
+                backgroundColor: '#D5B6E3',
+                transform: 'scale(1.05)',
+              },
+            }}
             startIcon={<PictureAsPdfIcon />}
           >
             PDF
@@ -133,7 +141,18 @@ const FiltroPesquisa: React.FC<FiltroPesquisaProps> = ({ onPesquisar }) => {
 
           <Button
             variant="contained"
-            sx={{ width: '48%', fontSize: '0.85rem', backgroundColor: '#8A2BE2', color: 'white' }}
+            sx={{
+              width: '55%',
+              bottom: '-10px',
+              fontSize: '0.85rem',
+              backgroundColor: '#7E5EF2',
+              color: 'white',
+              transition: 'background-color 0.3s, transform 0.2s',
+              '&:hover': {
+                backgroundColor: '#6B4BC5',
+                transform: 'scale(1.05)',
+              },
+            }}
             onClick={handleSubmit}
             startIcon={<SearchIcon />}
           >

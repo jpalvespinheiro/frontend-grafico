@@ -6,10 +6,12 @@ import BarChart from './components/BarChart';
 import ResumoPainel from './components/ResumoPainel';
 import FiltroPesquisa from './components/FiltroPesquisa';
 import Navbar from './components/NavBar';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import WalletIcon from '@mui/icons-material/Wallet';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'; 
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+
 import { Chart, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 Chart.register(
@@ -77,13 +79,19 @@ function App() {
     axios.get('http://localhost:3000/api/contas-vencidas', {
       params: { dataInicio: filtros.dataInicio, dataFim: filtros.dataFim },
     })
-      .then(response => setContasVencidas(parseCurrency(response.data.total)))
+      .then(response => {
+        const totalVencidas = response.data.reduce((total: number, conta: any) => total + conta.valor, 0);
+        setContasVencidas(totalVencidas);
+      })
       .catch(error => console.error('Erro ao buscar contas vencidas:', error));
 
     axios.get('http://localhost:3000/api/contas-a-vencer', {
       params: { dataInicio: filtros.dataInicio, dataFim: filtros.dataFim },
     })
-      .then(response => setContasAVencer(parseCurrency(response.data.total)))
+      .then(response => {
+        const totalAVencer = response.data.reduce((total: number, conta: any) => total + conta.valor, 0);
+        setContasAVencer(totalAVencer);
+      })
       .catch(error => console.error('Erro ao buscar contas a vencer:', error));
   }, []);
 
@@ -140,24 +148,24 @@ function App() {
             <ResumoPainel 
               titulo="Contas Vencidas" 
               valor={contasVencidas} 
-              cor="lightblue" 
-              icone={<AccountBalanceIcon fontSize="large" />} 
+              cor="#0DA7E5" 
+              icone={<WalletIcon fontSize="large" />} 
             />
           </Grid>
           <Grid item xs={12} sm={6} md={2.4}>
             <ResumoPainel 
               titulo="Contas a Vencer" 
               valor={contasAVencer} 
-              cor="lightblue" 
-              icone={<AccountBalanceIcon fontSize="large" />} 
+              cor="#0DA7E5"  
+              icone={<WalletIcon fontSize="large" />} 
             />
           </Grid>
         </Grid>
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Box sx={{ my: 4, borderRadius: 2, border: '1px solid #E0E0E0', p: 2, marginTop: '0px', marginBottom: '0px' }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Box sx={{ my: 0, borderRadius: 2, border: '1px solid #E0E0E0', p: 2 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'left' }}>
                 <Typography variant="h6">Gráfico de Resultados</Typography>
                 <Button variant="outlined" onClick={handleNextChart}>
                   {currentChart === 'LINE' ? 'Gráfico de Barras' : 'Gráfico de Linhas'}
@@ -174,7 +182,10 @@ function App() {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, backgroundColor: '#f5f5f5', borderRadius: 2, height: '100%' }}>
+            <Paper sx={{ p: 3, backgroundColor: '#ffffff', borderRadius: 2, height: '100%' }}>
+              <Typography variant="h6" sx={{ color: '#333333', mb: 2 }}>
+                Informações das Empresas
+              </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Grid container spacing={2}>
@@ -191,6 +202,7 @@ function App() {
                       <Typography variant="subtitle1" fontWeight="bold">Resultado</Typography>
                     </Grid>
                   </Grid>
+                  <Box sx={{ height: '1px', backgroundColor: '#E0E0E0', my: 1 }} />
                 </Grid>
 
                 <Grid item xs={12}>
@@ -206,6 +218,7 @@ function App() {
                     </Grid>
                     <Grid item xs={3}>
                       <Typography variant="body2">- R$ 11.595,21</Typography>
+                      <TrendingDownIcon sx={{ color: 'red', fontSize: '20px' }} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -223,24 +236,25 @@ function App() {
                     </Grid>
                     <Grid item xs={3}>
                       <Typography variant="body2">- R$ 14.191,32</Typography>
+                      <TrendingDownIcon sx={{ color: 'red', fontSize: '20px' }} />
                     </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box sx={{ backgroundColor: '#9370DB', padding: '8px', borderRadius: 1 }}>
+                  <Box sx={{ backgroundColor: '#763DF2', padding: '8px', color: 'white', borderRadius: 1 }}>
                     <Grid container spacing={2}>
                       <Grid item xs={3}>
                         <Typography variant="body1" fontWeight="bold">Total:</Typography>
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography variant="body2">R$ 67.740,79</Typography>
+                        <Typography variant="body2">R$ {totalDespesas.toFixed(2)}</Typography>
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography variant="body2">R$ 41.954,26</Typography>
+                        <Typography variant="body2">R$ {totalReceitas.toFixed(2)}</Typography>
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography variant="body2">- R$ 25.784,53</Typography>
+                        <Typography variant="body2">R$ {lucroLiquido.toFixed(2)}</Typography>
                       </Grid>
                     </Grid>
                   </Box>

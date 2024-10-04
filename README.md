@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+## Projeto de Controle Financeiro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Este projeto é uma aplicação web de controle financeiro, desenvolvida com React e Material-UI. O objetivo é fornecer uma interface intuitiva para visualizar receitas, despesas e outros dados financeiros de forma organizada e acessível.
 
-In the project directory, you can run:
 
-### `npm start`
+## Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    Dashboard Financeiro: Apresenta um resumo das receitas, despesas e lucro líquido com cards coloridos e ícones.
+    Gráficos: Utiliza gráficos de linhas e barras para mostrar os resultados financeiros ao longo do tempo.
+    Filtros de Pesquisa: Permite que os usuários filtrem dados com base em centros de custo e intervalos de datas.
+    Tabela de Empresas Fictícias: Exibe dados de empresas fictícias, incluindo despesas, receitas e resultados, com ícones indicativos.
+    Responsividade: A aplicação é totalmente responsiva, adaptando-se a diferentes tamanhos de tela.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    React: Biblioteca JavaScript para construção de interfaces de usuário.
+    Material-UI: Framework de design para React que fornece componentes prontos e personalizáveis.
+    Axios: Biblioteca para realizar requisições HTTP para buscar dados de uma API.
+    Chart.js: Biblioteca para renderizar gráficos interativos.
 
-### `npm run build`
+## Estrutura do Projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    src/components: Contém todos os componentes reutilizáveis da aplicação, como ResumoPainel, FiltroPesquisa, LineChart, e BarChart.
+    src/App.tsx: O componente principal da aplicação que gerencia o estado e a lógica da interface.
+    src/theme.ts: Define o tema e as cores da aplicação.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Claro! Aqui está um modelo de README que você pode usar para descrever o que foi feito no seu projeto.
+Projeto de Controle Financeiro
+Descrição
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Este projeto é uma aplicação web de controle financeiro, desenvolvida com React e Material-UI. O objetivo é fornecer uma interface intuitiva para visualizar receitas, despesas e outros dados financeiros de forma organizada e acessível.
+Funcionalidades
 
-### `npm run eject`
+    Dashboard Financeiro: Apresenta um resumo das receitas, despesas e lucro líquido com cards coloridos e ícones.
+    Gráficos: Utiliza gráficos de linhas e barras para mostrar os resultados financeiros ao longo do tempo.
+    Filtros de Pesquisa: Permite que os usuários filtrem dados com base em centros de custo e intervalos de datas.
+    Tabela de Empresas Fictícias: Exibe dados de empresas fictícias, incluindo despesas, receitas e resultados, com ícones indicativos.
+    Responsividade: A aplicação é totalmente responsiva, adaptando-se a diferentes tamanhos de tela.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tecnologias Utilizadas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    React: Biblioteca JavaScript para construção de interfaces de usuário.
+    Material-UI: Framework de design para React que fornece componentes prontos e personalizáveis.
+    Axios: Biblioteca para realizar requisições HTTP para buscar dados de uma API.
+    Chart.js: Biblioteca para renderizar gráficos interativos.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Estrutura do Projeto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    src/components: Contém todos os componentes reutilizáveis da aplicação, como ResumoPainel, FiltroPesquisa, LineChart, e BarChart.
+    src/App.tsx: O componente principal da aplicação que gerencia o estado e a lógica da interface.
+    src/theme.ts: Define o tema e as cores da aplicação.
 
-## Learn More
+## Como Executar o Projeto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+cd frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instale as dependências:
+
+npm install
+
+## Execute o projeto:
+
+    npm start
+
+## O projeto será executado em http://localhost:3000.
+
+## Conclusão
+
+Este projeto foi desenvolvido com foco em usabilidade e design responsivo, utilizando boas práticas de desenvolvimento. Esperamos que esta aplicação ajude os usuários a gerenciar suas finanças de forma eficaz.

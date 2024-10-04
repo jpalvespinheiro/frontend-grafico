@@ -55,7 +55,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
       borderColor: 'rgba(75, 192, 192, 1)',
       backgroundColor: 'rgba(75, 192, 192, 0.2)',
       fill: true,
-      tension: 0.4,
+      tension: 0.9,
     })),
   };
 
